@@ -1,0 +1,20 @@
+{
+  "name": "loadedzone",
+  "type": "module",
+  "version": "0.1.0",
+  "description": "LoadedZone — Zone 2 training through loaded walking. Research translated to personal action.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "private": true,
+  "dependencies": {
+    "@astrojs/react": "^5.0.2",
+    "@tailwindcss/vite": "^4.2.2",
+    "astro": "^6.1.2",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwindcss": "^4.2.2"
+  }
+}

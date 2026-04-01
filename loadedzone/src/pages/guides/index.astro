@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const guides = [
+  {
+    title: "Get Started for Zero Cost",
+    description: "Any rucksack, books or bags of soil for weight, whatever shoes you've got. Everything you need to start today without spending a penny.",
+    href: "/guides/get-started-free",
+    ready: true,
+    emoji: "🎒",
+  },
+  {
+    title: "The Talk Test: Zone 2 Without Any Tech",
+    description: "The simplest, most evidence-backed way to know you're in zone 2. No watch, no app, no heart rate monitor needed.",
+    href: "/guides/talk-test",
+    ready: true,
+    emoji: "💬",
+  },
+  {
+    title: "Choosing a Heart Rate Monitor",
+    description: "Chest strap vs wrist-based, what accuracy actually matters for zone 2, and what to look for at every budget.",
+    href: "/guides/heart-rate-monitors",
+    ready: false,
+    emoji: "⌚",
+  },
+  {
+    title: "Weighted Vest vs Rucksack vs Backpack",
+    description: "Pros, cons, and when each makes sense. Weight distribution, comfort, and what matters most for loaded walking.",
+    href: "/guides/vest-vs-rucksack",
+    ready: false,
+    emoji: "⚖️",
+  },
+  {
+    title: "Starting Weight Guide",
+    description: "Simple reference table: how much to carry based on your body weight, with conservative starting points and progression advice.",
+    href: "/guides/starting-weight",
+    ready: false,
+    emoji: "📊",
+  },
+  {
+    title: "Footwear for Loaded Walking",
+    description: "Trainers vs boots vs trail shoes. Socks, blisters, and what actually matters. Use what you've got, but here's what to know.",
+    href: "/guides/footwear",
+    ready: true,
+    emoji: "👟",
+  },
+];
+---
+
+<BaseLayout
+  title="Quick Guides — Practical Reference"
+  description="Short, practical guides for loaded walking. One question, one answer. No fluff."
+>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <div class="mb-10">
+      <h1 class="font-display text-4xl sm:text-5xl font-bold text-stone-900 tracking-tight">
+        Quick Guides
+      </h1>
+      <p class="mt-4 text-xl text-stone-500 max-w-2xl">
+        Short, practical answers. One topic per page. No fluff.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {guides.map((guide) => (
+        <div class={`bg-white border rounded-xl p-6 transition-all ${guide.ready ? 'border-stone-200 hover:border-zone/40 hover:shadow-md' : 'border-stone-100 opacity-60'}`}>
+          <div class="text-2xl mb-2">{guide.emoji}</div>
+          {guide.ready ? (
+            <a href={guide.href} class="font-display text-lg font-bold text-stone-900 hover:text-zone transition-colors">
+              {guide.title}
+            </a>
+          ) : (
+            <h3 class="font-display text-lg font-bold text-stone-900">{guide.title}</h3>
+          )}
+          <p class="mt-1 text-sm text-stone-500 leading-relaxed">{guide.description}</p>
+          {!guide.ready && (
+            <span class="inline-block mt-3 text-xs font-semibold text-stone-400 bg-stone-100 px-2 py-1 rounded">Coming soon</span>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

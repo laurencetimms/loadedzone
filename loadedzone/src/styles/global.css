@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  /* Earthy, warm palette — outdoor walking, not gym neon */
+  --color-stone-50: #fafaf9;
+  --color-stone-100: #f5f5f4;
+  --color-stone-200: #e7e5e4;
+  --color-stone-300: #d6d3d1;
+  --color-stone-400: #a8a29e;
+  --color-stone-500: #78716c;
+  --color-stone-600: #57534e;
+  --color-stone-700: #44403c;
+  --color-stone-800: #292524;
+  --color-stone-900: #1c1917;
+
+  /* Accent: a warm teal that feels like daylight on water */
+  --color-zone: #0d9488;
+  --color-zone-light: #14b8a6;
+  --color-zone-dark: #0f766e;
+
+  /* Secondary: a warm amber for highlights and CTAs */
+  --color-load: #d97706;
+  --color-load-light: #f59e0b;
+
+  /* Functional */
+  --color-safety: #dc2626;
+  --color-success: #16a34a;
+
+  /* Typography scale */
+  --font-display: "Literata", Georgia, serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+}
+
+/* Base typography */
+html {
+  font-family: var(--font-body);
+  color: var(--color-stone-800);
+  background-color: var(--color-stone-50);
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--color-stone-900);
+  line-height: 1.2;
+}
+
+/* Print styles for session cards */
+@media print {
+  nav, footer, .no-print {
+    display: none !important;
+  }
+  body {
+    font-size: 12pt;
+    color: #000;
+    background: #fff;
+  }
+}

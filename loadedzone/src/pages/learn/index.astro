@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const articles = [
+  {
+    title: "Zone 2: What It Is, Why It Matters, and How to Find Yours",
+    description: "The foundational explainer. San Millán's research, mitochondrial adaptation, fat oxidation, and what it all means for your health.",
+    href: "/learn/zone-2-explained",
+    ready: true,
+  },
+  {
+    title: "Why Loaded Walking Is the Most Accessible Zone 2 Training",
+    description: "The case for weighted walking. How adding a pack turns a walk into legitimate cardiovascular training — and why it beats jogging for most people.",
+    href: "/learn/loaded-walking-zone-2",
+    ready: false,
+  },
+  {
+    title: "Bone Density, Menopause, and Loaded Walking",
+    description: "What the evidence says about weight-bearing exercise, bone mineral density, and why loaded walking is especially relevant for women over 40.",
+    href: "/learn/bone-density-loaded-walking",
+    ready: false,
+  },
+  {
+    title: "How to Set Up Your Watch for Zone 2 Walking",
+    description: "Step-by-step guides for Garmin, Apple Watch, Polar, and Whoop. Custom HR zones, workout modes, and how to account for pack weight.",
+    href: "/learn/watch-setup-guide",
+    ready: false,
+  },
+  {
+    title: "The Pandolf Equation: How Military Research Helps You Walk Smarter",
+    description: "The science behind the Load Up calculator. Full equation breakdown, worked examples, and honest discussion of limitations.",
+    href: "/learn/pandolf-equation",
+    ready: false,
+  },
+  {
+    title: "A 12-Week Zone 2 Loaded Walking Plan",
+    description: "Progressive overload for walking. Week-by-week targets for load, pace, and duration. Includes a minimal-dose 2x/week variant.",
+    href: "/learn/12-week-plan",
+    ready: false,
+  },
+  {
+    title: "Short Sessions Count: Zone 2 Training Under 30 Minutes",
+    description: "Can your commute be zone 2 training? What the evidence says about shorter bouts and accumulated time.",
+    href: "/learn/short-sessions",
+    ready: false,
+  },
+  {
+    title: "Zone 2 and Strength Training: How They Work Together",
+    description: "For lifters adding zone 2. Interference effect, recovery, weekly scheduling, and the polarised training concept.",
+    href: "/learn/zone-2-and-strength",
+    ready: false,
+  },
+  {
+    title: "Heart Rate Variability: Understanding When to Ease Off",
+    description: "What HRV is, what a morning dip means, and how to use it to decide whether today is a load day or a recovery day.",
+    href: "/learn/heart-rate-variability",
+    ready: false,
+  },
+  {
+    title: "Walking With Friends: The Perfect Zone 2 Hack",
+    description: "The talk test as a social activity. Why chatting with a friend is literally the best way to stay in zone 2 — plus the mental health evidence.",
+    href: "/learn/walking-with-friends",
+    ready: false,
+  },
+];
+---
+
+<BaseLayout
+  title="Learn — The Research, Decoded"
+  description="Zone 2 research translated into plain language. Evidence articles with citations, not listicles."
+>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <div class="mb-10">
+      <h1 class="font-display text-4xl sm:text-5xl font-bold text-stone-900 tracking-tight">
+        The Research, Decoded
+      </h1>
+      <p class="mt-4 text-xl text-stone-500 max-w-2xl">
+        Evidence articles, not opinion pieces. Every claim cites a source.
+        Bookmark the ones that matter to you.
+      </p>
+    </div>
+
+    <div class="space-y-4">
+      {articles.map((article) => (
+        <div class={`bg-white border rounded-xl p-6 transition-all ${article.ready ? 'border-stone-200 hover:border-zone/40 hover:shadow-md' : 'border-stone-100 opacity-60'}`}>
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              {article.ready ? (
+                <a href={article.href} class="font-display text-lg font-bold text-stone-900 hover:text-zone transition-colors">
+                  {article.title}
+                </a>
+              ) : (
+                <h3 class="font-display text-lg font-bold text-stone-900">{article.title}</h3>
+              )}
+              <p class="mt-1 text-sm text-stone-500 leading-relaxed">{article.description}</p>
+            </div>
+            {!article.ready && (
+              <span class="text-xs font-semibold text-stone-400 bg-stone-100 px-2 py-1 rounded flex-shrink-0">Coming soon</span>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
