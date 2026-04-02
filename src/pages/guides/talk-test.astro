@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <ArticleLayout
@@ -38,7 +39,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
 <p>If you're walking with someone, even better. A real conversation is the perfect test. If you can both talk normally with only slight breathlessness, you're in zone 2. If one of you starts giving shorter and shorter answers, you've drifted above it.</p>
 
-<p>This is why the <a href="/learn/walking-with-friends">walking with friends</a> approach is so powerful — your conversation partner is a living, breathing zone 2 monitor.</p>
+<p>This is why the <a href={`${base}/learn/walking-with-friends`}>walking with friends</a> approach is so powerful — your conversation partner is a living, breathing zone 2 monitor.</p>
 
 <h2>When to use it instead of a heart rate monitor</h2>
 
@@ -49,7 +50,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 <p>If you don't own a heart rate monitor and aren't planning to buy one, the talk test alone is enough to get meaningful zone 2 training benefit. Don't let the absence of tech stop you from starting.</p>
 
 <div class="callout">
-  <p><strong>Want to be more precise?</strong> Use <a href="/find-your-zone">Find Your Zone 2</a> to calculate your personal heart rate range. But if you prefer to walk without a watch and without a phone, the talk test is a genuinely solid alternative — not a compromise.</p>
+  <p><strong>Want to be more precise?</strong> Use <a href={`${base}/find-your-zone`}>Find Your Zone 2</a> to calculate your personal heart rate range. But if you prefer to walk without a watch and without a phone, the talk test is a genuinely solid alternative — not a compromise.</p>
 </div>
 
 </ArticleLayout>

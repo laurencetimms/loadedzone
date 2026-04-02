@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <ArticleLayout
@@ -54,7 +55,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
 <p>A good rule: if the weight is changing your posture — making you lean forward, hunch your shoulders, or take shorter steps — it's too heavy. Reduce it. You should be able to walk with your normal gait, just working a bit harder.</p>
 
-<p>Use the <a href="/load-up">Load Up calculator</a> to find a more precise starting weight based on your body weight, age, and target heart rate zone.</p>
+<p>Use the <a href={`${base}/load-up`}>Load Up calculator</a> to find a more precise starting weight based on your body weight, age, and target heart rate zone.</p>
 
 <h2>The shoes</h2>
 
@@ -70,7 +71,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
 <p>The most important thing at the start is that your shoes are <strong>comfortable for the distance you're planning to walk without any extra weight</strong>. If a shoe gives you blisters on a normal walk, adding a loaded pack will make it worse, not better.</p>
 
-<p>Read the <a href="/guides/footwear">full footwear guide</a> for more detail on socks, blister prevention, and what to look for if you do decide to buy something.</p>
+<p>Read the <a href={`${base}/guides/footwear`}>full footwear guide</a> for more detail on socks, blister prevention, and what to look for if you do decide to buy something.</p>
 
 <h2>The route</h2>
 
@@ -99,7 +100,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 <p>Everything else — heart rate monitors, proper rucking packs, structured programmes — is refinement. It makes the process better and more precise. But it's not required. The most important thing is to load up and walk out the door.</p>
 
 <div class="callout">
-  <p><strong>Ready to get more precise?</strong> Use <a href="/find-your-zone">Find Your Zone 2</a> to calculate your personal heart rate range, then <a href="/load-up">Load Up</a> to find the ideal weight and pace for your body. Or just keep walking and adjust by feel — that works too.</p>
+  <p><strong>Ready to get more precise?</strong> Use <a href={`${base}/find-your-zone`}>Find Your Zone 2</a> to calculate your personal heart rate range, then <a href={`${base}/load-up`}>Load Up</a> to find the ideal weight and pace for your body. Or just keep walking and adjust by feel — that works too.</p>
 </div>
 
 </ArticleLayout>

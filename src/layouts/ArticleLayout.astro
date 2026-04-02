@@ -9,11 +9,12 @@ interface Props {
 
 import BaseLayout from './BaseLayout.astro';
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const {
   title,
   description,
   type,
-  backLink = type === 'article' ? '/learn' : '/guides',
+  backLink = type === 'article' ? `${base}/learn` : `${base}/guides`,
   backLabel = type === 'article' ? 'All articles' : 'All guides',
 } = Astro.props;
 ---

@@ -5,6 +5,7 @@ interface Props {
 }
 
 const { title, description = "Zone 2 training through loaded walking. Research translated to personal action." } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -20,15 +21,15 @@ const { title, description = "Zone 2 training through loaded walking. Research t
 <body class="min-h-screen flex flex-col">
   <nav class="no-print border-b border-stone-200 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2 text-stone-900 hover:text-zone transition-colors">
+      <a href={`${base}/`} class="flex items-center gap-2 text-stone-900 hover:text-zone transition-colors">
         <span class="font-display font-bold text-xl tracking-tight">Loaded<span class="text-zone">Zone</span></span>
       </a>
       <div class="hidden sm:flex items-center gap-6 text-sm font-medium text-stone-600">
-        <a href="/find-your-zone" class="hover:text-zone transition-colors">Find Your Zone</a>
-        <a href="/load-up" class="hover:text-zone transition-colors">Load Up</a>
-        <a href="/session-card" class="hover:text-zone transition-colors">Session Card</a>
-        <a href="/learn" class="hover:text-zone transition-colors">Learn</a>
-        <a href="/guides" class="hover:text-zone transition-colors">Guides</a>
+        <a href={`${base}/find-your-zone`} class="hover:text-zone transition-colors">Find Your Zone</a>
+        <a href={`${base}/load-up`} class="hover:text-zone transition-colors">Load Up</a>
+        <a href={`${base}/session-card`} class="hover:text-zone transition-colors">Session Card</a>
+        <a href={`${base}/learn`} class="hover:text-zone transition-colors">Learn</a>
+        <a href={`${base}/guides`} class="hover:text-zone transition-colors">Guides</a>
       </div>
       <button id="mobile-menu-btn" class="sm:hidden p-2 text-stone-600" aria-label="Open menu">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -37,11 +38,11 @@ const { title, description = "Zone 2 training through loaded walking. Research t
       </button>
     </div>
     <div id="mobile-menu" class="sm:hidden hidden border-t border-stone-200 bg-white px-4 py-3 space-y-2">
-      <a href="/find-your-zone" class="block py-2 text-stone-700 hover:text-zone">Find Your Zone</a>
-      <a href="/load-up" class="block py-2 text-stone-700 hover:text-zone">Load Up</a>
-      <a href="/session-card" class="block py-2 text-stone-700 hover:text-zone">Session Card</a>
-      <a href="/learn" class="block py-2 text-stone-700 hover:text-zone">Learn</a>
-      <a href="/guides" class="block py-2 text-stone-700 hover:text-zone">Guides</a>
+      <a href={`${base}/find-your-zone`} class="block py-2 text-stone-700 hover:text-zone">Find Your Zone</a>
+      <a href={`${base}/load-up`} class="block py-2 text-stone-700 hover:text-zone">Load Up</a>
+      <a href={`${base}/session-card`} class="block py-2 text-stone-700 hover:text-zone">Session Card</a>
+      <a href={`${base}/learn`} class="block py-2 text-stone-700 hover:text-zone">Learn</a>
+      <a href={`${base}/guides`} class="block py-2 text-stone-700 hover:text-zone">Guides</a>
     </div>
   </nav>
 

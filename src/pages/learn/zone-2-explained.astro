@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <ArticleLayout
@@ -93,13 +94,13 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
 <p class="citation">Tanaka, H. et al. (2001). "Age-predicted maximal heart rate revisited." Journal of the American College of Cardiology, 37(1), 153-156.</p>
 
-<p>Use our <a href="/find-your-zone">zone 2 calculator</a> to do this automatically.</p>
+<p>Use our <a href={`${base}/find-your-zone`}>zone 2 calculator</a> to do this automatically.</p>
 
 <h3>2. The talk test (no equipment needed)</h3>
 
 <p>Speak out loud while exercising. If you can talk in full sentences but couldn't comfortably sing, you're in zone 2. This has been validated by research as a reliable proxy for the ventilatory threshold that marks the top of zone 2.</p>
 
-<p>Read the full <a href="/guides/talk-test">talk test guide</a>.</p>
+<p>Read the full <a href={`${base}/guides/talk-test`}>talk test guide</a>.</p>
 
 <h3>3. Lab metabolic testing (gold standard)</h3>
 
@@ -118,15 +119,15 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
 <p>Adding a weighted pack or vest turns walking into a legitimate zone 2 training modality. It's accessible, low-impact, requires no gym, works outdoors, and can be adjusted precisely by changing the weight or pace.</p>
 
-<p>Use the <a href="/load-up">Load Up calculator</a> to find the specific load and pace that puts you in zone 2.</p>
+<p>Use the <a href={`${base}/load-up`}>Load Up calculator</a> to find the specific load and pace that puts you in zone 2.</p>
 
 <div class="callout">
   <p><strong>Where to go next:</strong></p>
   <ul>
-    <li><a href="/find-your-zone">Calculate your personal zone 2</a> — takes 30 seconds</li>
-    <li><a href="/load-up">Find your ideal load and pace</a> — the reverse zone 2 calculator</li>
-    <li><a href="/guides/get-started-free">Get started for zero cost</a> — a rucksack, some books, and whatever shoes you've got</li>
-    <li><a href="/learn/loaded-walking-zone-2">Why loaded walking is the most accessible zone 2 training</a></li>
+    <li><a href={`${base}/find-your-zone`}>Calculate your personal zone 2</a> — takes 30 seconds</li>
+    <li><a href={`${base}/load-up`}>Find your ideal load and pace</a> — the reverse zone 2 calculator</li>
+    <li><a href={`${base}/guides/get-started-free`}>Get started for zero cost</a> — a rucksack, some books, and whatever shoes you've got</li>
+    <li><a href={`${base}/learn/loaded-walking-zone-2`}>Why loaded walking is the most accessible zone 2 training</a></li>
   </ul>
 </div>
 

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout
@@ -18,13 +19,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </p>
       <div class="mt-10 flex flex-col sm:flex-row gap-4">
         <a
-          href="/load-up"
+          href={`${base}/load-up`}
           class="inline-flex items-center justify-center px-8 py-3.5 bg-zone text-white font-semibold rounded-lg hover:bg-zone-dark transition-colors text-lg"
         >
           Find my load &amp; pace
         </a>
         <a
-          href="/find-your-zone"
+          href={`${base}/find-your-zone`}
           class="inline-flex items-center justify-center px-8 py-3.5 bg-white text-stone-700 font-semibold rounded-lg border border-stone-300 hover:border-zone hover:text-zone transition-colors text-lg"
         >
           Find my zone 2
@@ -39,7 +40,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <h2 class="font-display text-2xl sm:text-3xl font-bold text-stone-900 mb-10">Three tools. No account needed.</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-        <a href="/find-your-zone" class="group bg-white rounded-xl p-6 border border-stone-200 hover:border-zone/40 hover:shadow-md transition-all">
+        <a href={`${base}/find-your-zone`} class="group bg-white rounded-xl p-6 border border-stone-200 hover:border-zone/40 hover:shadow-md transition-all">
           <div class="text-3xl mb-3">♡</div>
           <h3 class="font-display text-lg font-bold text-stone-900 group-hover:text-zone transition-colors">Find Your Zone 2</h3>
           <p class="mt-2 text-sm text-stone-500 leading-relaxed">
@@ -47,7 +48,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </p>
         </a>
 
-        <a href="/load-up" class="group bg-white rounded-xl p-6 border border-zone/30 shadow-sm hover:shadow-md transition-all ring-1 ring-zone/10">
+        <a href={`${base}/load-up`} class="group bg-white rounded-xl p-6 border border-zone/30 shadow-sm hover:shadow-md transition-all ring-1 ring-zone/10">
           <div class="text-3xl mb-3">⚖</div>
           <h3 class="font-display text-lg font-bold text-zone-dark group-hover:text-zone transition-colors">Load Up</h3>
           <p class="mt-2 text-sm text-stone-500 leading-relaxed">
@@ -56,7 +57,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <span class="inline-block mt-3 text-xs font-semibold text-zone bg-zone/10 px-2 py-0.5 rounded">Flagship tool</span>
         </a>
 
-        <a href="/session-card" class="group bg-white rounded-xl p-6 border border-stone-200 hover:border-zone/40 hover:shadow-md transition-all">
+        <a href={`${base}/session-card`} class="group bg-white rounded-xl p-6 border border-stone-200 hover:border-zone/40 hover:shadow-md transition-all">
           <div class="text-3xl mb-3">📋</div>
           <h3 class="font-display text-lg font-bold text-stone-900 group-hover:text-zone transition-colors">Session Card</h3>
           <p class="mt-2 text-sm text-stone-500 leading-relaxed">
@@ -90,7 +91,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </p>
       </div>
       <div class="mt-8">
-        <a href="/learn/zone-2-explained" class="text-zone font-semibold hover:text-zone-dark transition-colors">
+        <a href={`${base}/learn/zone-2-explained`} class="text-zone font-semibold hover:text-zone-dark transition-colors">
           Read the full evidence guide →
         </a>
       </div>
@@ -114,7 +115,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </p>
         </div>
         <div class="mt-8">
-          <a href="/guides/get-started-free" class="text-zone font-semibold hover:text-zone-dark transition-colors">
+          <a href={`${base}/guides/get-started-free`} class="text-zone font-semibold hover:text-zone-dark transition-colors">
             Read the zero-cost start guide →
           </a>
         </div>

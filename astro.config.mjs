@@ -7,5 +7,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  site: 'https://loadedzone.co.uk',
+  site: 'https://laurencetimms.github.io',
+  base: '/loadedzone',
 });
