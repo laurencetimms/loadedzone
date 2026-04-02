@@ -335,6 +335,25 @@ export default function LoadUpCalculator() {
               </p>
             </div>
             
+            {/* Safety Guardrails */}
+            {(result.recommended.loadKg > 20 || result.recommended.loadKg > (useImperial ? parseFloat(bodyWeight) * 0.453592 : parseFloat(bodyWeight)) * 0.20) && (
+              <div className="mb-6 bg-amber-50 border border-amber-200 rounded-lg p-5 text-amber-900 shadow-sm flex items-start gap-3">
+                <span className="text-xl leading-none mt-0.5">⚠️</span>
+                <div>
+                  <h4 className="font-bold text-amber-900 mb-1">Heavy Load Alert</h4>
+                  {result.recommended.loadKg > 20 ? (
+                    <p className="text-sm text-amber-800 leading-relaxed">
+                      This plan calls for <strong>{result.recommended.loadKg}kg</strong>. While specialist rucking gear can handle this, putting this much weight in a standard rucksack shifts the workout from cardio to heavy strength endurance, and risks straining your back. <strong>We strongly recommend changing your terrain to a hill, or increasing your walking pace to lower the required weight.</strong>
+                    </p>
+                  ) : (
+                    <p className="text-sm text-amber-800 leading-relaxed">
+                      This plan calls for a load that is over <strong>20% of your body weight</strong>. Carrying this much can alter your natural walking gait and increase impact on your knees and lower back. Consider walking slightly faster to reduce the weight needed.
+                    </p>
+                  )}
+                </div>
+              </div>
+            )}
+
             {/* Session Card CTA Loop */}
             <div className="mt-8 bg-white border border-stone-200 rounded-xl p-6 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
               <div>
