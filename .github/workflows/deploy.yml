@@ -27,9 +27,6 @@ jobs:
           node-version: 22
           cache: npm
 
-      - name: Disable Jekyll
-        run: touch dist/.nojekyll
-
       - name: Install dependencies
         run: npm ci
 
