@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
+// 1. Get the base URL
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const articles = [
   {
     title: "Zone 2: What It Is, Why It Matters, and How to Find Yours",
@@ -86,7 +89,7 @@ const articles = [
           <div class="flex items-start justify-between gap-4">
             <div>
               {article.ready ? (
-                <a href={article.href} class="font-display text-lg font-bold text-stone-900 hover:text-zone transition-colors">
+                <a href={`${base}${article.href}`} class="font-display text-lg font-bold text-stone-900 hover:text-zone transition-colors">
                   {article.title}
                 </a>
               ) : (
