@@ -475,6 +475,16 @@ export default function LoadUpCalculator() {
                     Based on your age, resting heart rate, and fitness level, we calculate your target zone 2 threshold using the Karvonen method. We then convert this required heart rate into an estimated oxygen consumption (VO₂) demand. Finally, we reverse-engineer the Pandolf formula against your chosen terrain to find the exact combination of pace and weight required to reach that specific metabolic demand.
                   </p>
                 </div>
+
+                <div>
+                  <h4 className="font-semibold text-stone-800 mb-1.5">Modern Adjustments</h4>
+                  <p>
+                    While the original Pandolf equation is foundational, modern research (such as Drain et al., 2017) shows it consistently underestimates the energy burned by civilians using modern gear, especially at brisk speeds. We apply a sliding-scale biomechanical correction factor (+5% to +30%) to the raw output based on your speed, load ratio, and fitness level to ensure your heart rate targets are accurate for the real world.
+                  </p>
+                </div>
+
+
+
                 <div>
                   <h4 className="font-semibold text-stone-800 mb-1.5">Limitations</h4>
                   <p>

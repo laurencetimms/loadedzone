@@ -237,22 +237,13 @@ export function calculateAllZone2(profile: UserProfile): Zone2Range[] {
 // ──────────────────────────────────────────────
 
 /**
- * Pandolf equation for metabolic cost of walking with load.
- *
- * M = 1.5W + 2.0(W + L)(L/W)² + η(W + L)(1.5V² + 0.35VG)
- *
- * Where:
- *   M = metabolic rate (watts)
- *   W = body weight (kg)
- *   L = load (kg)
- *   V = speed (m/s)
- *   G = grade (% slope, e.g., 5 for 5%)
- *   η = terrain coefficient
- *
- * Pandolf, K.B. et al. (1977). Journal of Applied Physiology.
- * Updated by Santee et al. (2001) for downhill: adds -η(W+L)(V·G·(G+6))/100
- *
- * Returns metabolic rate in watts.
+ * Modernised Pandolf equation for metabolic cost of walking with load.
+ * * Base equation (1977): M = 1.5W + 2.0(W + L)(L/W)² + η(W + L)(1.5V² + 0.35VG)
+ * * Correction Factor (Civilian/Modern Gear Adjustment):
+ * Research (Drain et al., 2017) shows the original military formula systematically 
+ * under-predicts metabolic cost by 12-33%, especially at higher speeds (>1.25 m/s) 
+ * and heavier loads. We apply a sliding-scale multiplier to bridge the gap between 
+ * 1970s infantrymen and modern civilian walkers.
  */
 export function pandolfMetabolicCost(
   bodyWeightKg: number,
@@ -260,6 +251,7 @@ export function pandolfMetabolicCost(
   speedMs: number,
   gradePercent: number,
   terrainFactor: number,
+  fitnessLevel: string // Added to influence the correction factor
 ): number {
   const W = bodyWeightKg;
   const L = loadKg;
@@ -267,24 +259,47 @@ export function pandolfMetabolicCost(
   const G = gradePercent;
   const eta = terrainFactor;
 
-  // Standing metabolic cost
+  // 1. Calculate Base Pandolf (1977)
   const standing = 1.5 * W;
-
-  // Load carriage cost
   const loadCost = 2.0 * (W + L) * Math.pow(L / W, 2);
-
-  // Locomotion cost (walking + grade)
   const locomotion = eta * (W + L) * (1.5 * V * V + 0.35 * V * G);
+  let baseWatts = standing + loadCost + locomotion;
 
-  let M = standing + loadCost + locomotion;
-
-  // Santee correction for downhill (not used in our MVP since we only model flat-to-moderate uphill)
-  // Included for completeness
+  // Santee correction for downhill 
   if (G < 0) {
-    M += eta * (W + L) * (V * G * (G + 6)) / 100;
+    baseWatts += eta * (W + L) * (V * G * (G + 6)) / 100;
   }
 
-  return Math.max(M, standing); // Can't be below standing metabolic cost
+  baseWatts = Math.max(baseWatts, standing);
+
+  // 2. Calculate Modern Correction Factor (Multiplier)
+  let correctionMultiplier = 1.0;
+
+  // A. Speed Adjustment: Pandolf severely underestimates above 1.25 m/s (~4.5 km/h)
+  if (V > 1.25) {
+      // Smoothly scale up to an extra 15% at brisk walking speeds
+      correctionMultiplier += (V - 1.25) * 0.20; 
+  }
+
+  // B. Load Adjustment: Underestimation compounds as load increases relative to body weight
+  const loadRatio = L / W;
+  if (loadRatio > 0.15) {
+      // Add up to 10% penalty for heavy loads altering civilian gait
+      correctionMultiplier += (loadRatio - 0.15) * 0.5; 
+  }
+
+  // C. Biomechanical Efficiency Penalty (Fitness Level)
+  // Sedentary/Light users lack the load-carriage economy of trained personnel
+  if (fitnessLevel === 'sedentary') {
+      correctionMultiplier += 0.08; 
+  } else if (fitnessLevel === 'light') {
+      correctionMultiplier += 0.04;
+  }
+  
+  // Cap the multiplier to prevent runaway estimates at extreme edges
+  correctionMultiplier = Math.min(correctionMultiplier, 1.35);
+
+  return baseWatts * correctionMultiplier;
 }
 
 /**
@@ -401,7 +416,7 @@ export function calculateLoadUp(input: LoadUpInput): LoadUpResult {
   for (let loadKg = 0; loadKg <= maxLoad; loadKg += 1) {
     for (let paceKmh = 3.5; paceKmh <= 7.0; paceKmh += 0.5) {
       const speedMs = kmhToMs(paceKmh);
-      const metabolicWatts = pandolfMetabolicCost(bodyWeightKg, loadKg, speedMs, gradePercent, terrainFactor);
+      const metabolicWatts = pandolfMetabolicCost(bodyWeightKg, loadKg, speedMs, gradePercent, terrainFactor, fitnessLevel);
       const estimatedHR = metabolicCostToHR(metabolicWatts, bodyWeightKg, maxHR, restingHR, vo2max);
       const caloriesPerHour = wattsToKcalPerHour(metabolicWatts);
       const inZone2 = estimatedHR >= zone2Low && estimatedHR <= zone2High;
