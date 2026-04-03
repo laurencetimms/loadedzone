@@ -479,9 +479,6 @@ export function calculateLoadUp(input: LoadUpInput): LoadUpResult {
 
   // Safety notes
   const safetyNotes: string[] = [];
-  if (recommended.loadKg > bodyWeightKg * 0.2) {
-    safetyNotes.push('This load exceeds 20% of your body weight. Build up gradually over several weeks.');
-  }
   if (recommended.loadKg > 0 && recommended.loadKg < 4) {
     safetyNotes.push('Very light loads can shift around and affect your balance. Make sure the weight is secure and positioned high in the pack.');
   }
